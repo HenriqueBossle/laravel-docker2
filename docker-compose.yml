@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    environment:
+      APP_ENV: production
+      APP_DEBUG: false
+      APP_KEY: ${APP_KEY}
+      
+      # Configurações do banco NeonDB (PostgreSQL)
+      DB_CONNECTION: pgsql
+      DB_HOST: ep-xxxxxx.us-east-2.aws.neon.tech
+      DB_PORT: 5432
+      DB_DATABASE: nome_do_banco
+      DB_USERNAME: usuario_do_neon
+      DB_PASSWORD: senha_do_neon
+      DB_SSLMODE: require
+
+      # Outras variáveis importantes
+      CACHE_DRIVER: file
+      SESSION_DRIVER: file
+      QUEUE_CONNECTION: sync
+      LOG_CHANNEL: stderr
+      APP_URL: https://seuapp.onrender.com
