@@ -19,6 +19,12 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Copiar o código da aplicação
 COPY . .
 
+# Criar e corrigir permissões para logs (evita erro de append no laravel.log)
+RUN mkdir -p /var/www/html/storage/logs \
+    && touch /var/www/html/storage/logs/laravel.log \
+    && chown -R www-data:www-data /var/www/html/storage \
+    && chmod -R 775 /var/www/html/storage
+
 # Instalar dependências PHP (Laravel)
 RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
