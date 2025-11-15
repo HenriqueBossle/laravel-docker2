@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CharacterController extends Controller
 {
     public function create(){
-        return view('character.create');
+        return view('characters.create');
     }
     public function index(){
         $characters = Character::all();

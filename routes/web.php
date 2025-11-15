@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('characters', [CharacterController::class, 'index'])->name('characters.index');
+Route::get('characters/create', [CharacterController::class, 'create'])->name('characters.create');
+
+
 
 
 require __DIR__.'/auth.php';
